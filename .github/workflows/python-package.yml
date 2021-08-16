@@ -29,14 +29,14 @@ jobs:
         sudo apt-get install libpcap-dev -y
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        sudo python -m pip install --upgrade pip
     - name: install shuize
       run: |
-        git clone https://github.com/0x727/ShuiZe_0x727.git
+        git clone https://github.com/lisa-hue/ShuiZe_0x727.git
         cd ./ShuiZe_0x727
         sudo chmod 777 docker_build.sh
-        ./docker_build.sh
+        sudo ./docker_build.sh
     - name: Test shuize
       run: |
         cd ./ShuiZe_0x727
-        python ShuiZe.py -d sf.cn
+        sudo python ShuiZe.py -d sf.cn
