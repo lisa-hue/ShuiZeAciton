@@ -27,6 +27,8 @@ jobs:
         sudo apt install git --fix-missing -y
         sudo apt install vim -y
         sudo apt-get install libpcap-dev -y
+        sudo apt install net-tools -y
+        sudo ifconfig
     - name: Install dependencies
       run: |
         sudo python -m pip install --upgrade pip
