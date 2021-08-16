@@ -38,4 +38,5 @@ jobs:
         ./docker_build.sh
     - name: Test shuize
       run: |
+        cd ./ShuiZe_0x727
         python ShuiZe.py -d sf.cn
