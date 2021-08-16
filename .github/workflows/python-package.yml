@@ -1,0 +1,43 @@
+name: Python package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: ubuntu core install
+      run: |
+        apt-get update
+        apt install git --fix-missing -y
+        apt install vim -y
+        apt-get install libpcap-dev -y
+        rm /usr/bin/python3
+        ln -s /usr/local/bin/python3.8 /usr/bin/python3
+    - name: Install dependencies
+      run: |
+        python3 -m pip install --upgrade pip
+    - name: install shuize
+      run: |
+        git clone https://github.com/0x727/ShuiZe_0x727.git
+        cd ./ShuiZe_0x727
+        chmod 777 docker_build.sh
+        ./docker_build.sh
+    - name: Test shuize
+      run: |
+        python3 ShuiZe.py -d sf.cn
