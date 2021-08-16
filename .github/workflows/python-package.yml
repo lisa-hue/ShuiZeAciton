@@ -27,11 +27,9 @@ jobs:
         apt install git --fix-missing -y
         apt install vim -y
         apt-get install libpcap-dev -y
-        rm /usr/bin/python3
-        ln -s /usr/local/bin/python3.8 /usr/bin/python3
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip
+        python -m pip install --upgrade pip
     - name: install shuize
       run: |
         git clone https://github.com/0x727/ShuiZe_0x727.git
@@ -40,4 +38,4 @@ jobs:
         ./docker_build.sh
     - name: Test shuize
       run: |
-        python3 ShuiZe.py -d sf.cn
+        python ShuiZe.py -d sf.cn
