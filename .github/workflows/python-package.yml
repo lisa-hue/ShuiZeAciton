@@ -37,7 +37,7 @@ jobs:
         sudo chmod 777 docker_build.sh
         sudo ./docker_build.sh
         cd ./ShuiZe_0x727/Plugins/infoGather/subdomain/ksubdomain
-        ./ksubdomain -silent -test
+        ./ksubdomain_linux -silent -test
     - name: Test shuize
       run: |
         cd ./ShuiZe_0x727
