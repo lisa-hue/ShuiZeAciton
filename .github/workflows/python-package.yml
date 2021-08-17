@@ -48,7 +48,7 @@ jobs:
     - name: shuize run
       run: |
         cd ./ShuiZe_0x727
-        sudo python ShuiZe.py -d 4399.com
+        sudo python ShuiZe.py -d sf.cn
         
     - name: save_result
       uses: actions/upload-artifact@v1
