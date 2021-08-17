@@ -27,18 +27,12 @@ jobs:
         sudo apt install git --fix-missing -y
         sudo apt install vim -y
         sudo apt-get install libpcap-dev -y
-        sudo apt install net-tools -y
-        sudo ifconfig
-    - name: Install dependencies
-      run: |
-        sudo python -m pip install --upgrade pip
+
     - name: install shuize
       run: |
         git clone https://github.com/lisa-hue/ShuiZe_0x727.git
         cd ./ShuiZe_0x727
-        sudo chmod 777 docker_build.sh
-        sudo ./docker_build.sh
-        
+
         sed -i 's/fofaemail/${{ secrets.FOFAEMAIL }}/g' ./iniFile/config.ini
         sed -i 's/fofakey/${{ secrets.FOFAKEY }}/g' ./iniFile/config.ini
         sed -i 's/shodankey/${{ secrets.SHODANKEY }}/g' ./iniFile/config.ini
@@ -48,13 +42,3 @@ jobs:
         sed -i 's/censyssecret/${{ secrets.CENSYSSECRET }}/g' ./iniFile/config.ini
         cat ./iniFile/config.ini
         echo ${{ secrets.FOFAEMAIL }}
-    - name: Test shuize
-      run: |
-        cd ./ShuiZe_0x727
-        sudo python ShuiZe.py -d sf.cn
-        
-    - name: save_result
-      uses: actions/upload-artifact@v1
-      with:
-          name: result
-          path: /home/runner/work/ShuiZeAciton/ShuiZeAciton/ShuiZe_0x727/result
