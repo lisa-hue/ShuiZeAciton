@@ -38,8 +38,14 @@ jobs:
         cd ./ShuiZe_0x727
         sudo chmod 777 docker_build.sh
         sudo ./docker_build.sh
-        cd ./Plugins/infoGather/subdomain/ksubdomain
-        sudo ./ksubdomain_linux -e 0 -test
+        sed -i 's/fofaemail/${{secrets.FOFAEMAIL}}/g' ./iniFile/config.ini
+        sed -i 's/fofakey/${{secrets.FOFAKEY}}/g' ./iniFile/config.ini
+        sed -i 's/shodankey/${{secrets.SHODANKEY}}/g' ./iniFile/config.ini
+        sed -i 's/githubapi/${{secrets.GITHUBAPI}}/g' ./iniFile/config.ini
+        sed -i 's/virustotalapi/${{secrets.VIRUSTOTALAPI}}/g' ./iniFile/config.ini
+        sed -i 's/censysuid/${{secrets.CENSYSUID}}/g' ./iniFile/config.ini
+        sed -i 's/censyssecret/${{secrets.CENSYSSECRET}}/g' ./iniFile/config.ini
+        cat ./iniFile/config.ini
     - name: Test shuize
       run: |
         cd ./ShuiZe_0x727
