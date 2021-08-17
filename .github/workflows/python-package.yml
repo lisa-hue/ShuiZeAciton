@@ -38,7 +38,7 @@ jobs:
         cd ./ShuiZe_0x727
         sudo chmod 777 docker_build.sh
         sudo ./docker_build.sh
-        cat ./iniFile/config.ini
+        
         sed -i 's/fofaemail/${{ secrets.FOFAEMAIL }}/g' ./iniFile/config.ini
         sed -i 's/fofakey/${{ secrets.FOFAKEY }}/g' ./iniFile/config.ini
         sed -i 's/shodankey/${{ secrets.SHODANKEY }}/g' ./iniFile/config.ini
@@ -47,6 +47,7 @@ jobs:
         sed -i 's/censysuid/${{ secrets.CENSYSUID }}/g' ./iniFile/config.ini
         sed -i 's/censyssecret/${{ secrets.CENSYSSECRET }}/g' ./iniFile/config.ini
         cat ./iniFile/config.ini
+        echo ${{ secrets.FOFAEMAIL }}
     - name: Test shuize
       run: |
         cd ./ShuiZe_0x727
