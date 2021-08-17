@@ -21,13 +21,12 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: ubuntu core install
+    - name: install ubuntu core 
       run: |
         sudo apt-get update
         sudo apt install git --fix-missing -y
         sudo apt install vim -y
         sudo apt-get install libpcap-dev -y
-        sudo apt install net-tools -y
     - name: Install dependencies
       run: |
         sudo python -m pip install --upgrade pip
@@ -45,8 +44,8 @@ jobs:
         sed -i 's/virustotalapi/${{ secrets.VIRUSTOTALAPI }}/g' ./iniFile/config.ini
         sed -i 's/censysuid/${{ secrets.CENSYSUID }}/g' ./iniFile/config.ini
         sed -i 's/censyssecret/${{ secrets.CENSYSSECRET }}/g' ./iniFile/config.ini
-        cat ./iniFile/config.ini
-    - name: Test shuize
+
+    - name: shuize run
       run: |
         cd ./ShuiZe_0x727
         sudo python ShuiZe.py -d sf.cn
