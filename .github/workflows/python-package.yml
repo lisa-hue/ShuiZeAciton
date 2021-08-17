@@ -55,3 +55,8 @@ jobs:
       with:
           name: result
           path: /home/runner/work/ShuiZeAciton/ShuiZeAciton/ShuiZe_0x727/result/
+    - name: save_text
+      uses: actions/upload-artifact@v1
+      with:
+          name: result
+          path: /home/runner/work/ShuiZeAciton/ShuiZeAciton/ShuiZe_0x727/
