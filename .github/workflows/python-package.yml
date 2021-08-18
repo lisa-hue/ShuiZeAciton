@@ -48,15 +48,10 @@ jobs:
     - name: shuize run
       run: |
         cd ./ShuiZe_0x727
-        sudo python ShuiZe.py -d sf.cn
+        sudo python ShuiZe.py -d sf-express.com
         
     - name: save_result
       uses: actions/upload-artifact@v1
       with:
           name: result
           path: /home/runner/work/ShuiZeAciton/ShuiZeAciton/ShuiZe_0x727/result/
-    - name: save_text
-      uses: actions/upload-artifact@v1
-      with:
-          name: result
-          path: /home/runner/work/ShuiZeAciton/ShuiZeAciton/ShuiZe_0x727/
